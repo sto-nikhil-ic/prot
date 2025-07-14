@@ -279,3 +279,202 @@ const loadingStyles = `
 const styleSheet = document.createElement('style');
 styleSheet.textContent = loadingStyles;
 document.head.appendChild(styleSheet);
+
+// Art Modal Functionality
+const artLink = document.getElementById("art-link") // You need to add this ID to your art navigation link
+const artModal = document.getElementById("art-modal")
+const artClose = document.querySelector(".art-close")
+const artCategoryBtns = document.querySelectorAll(".art-category-btn")
+const artGalleries = document.querySelectorAll(".art-gallery")
+const artItems = document.querySelectorAll(".art-item")
+const artLightbox = document.getElementById("art-lightbox")
+const lightboxClose = document.querySelector(".lightbox-close")
+const lightboxImage = document.getElementById("lightbox-image")
+const lightboxTitle = document.getElementById("lightbox-title")
+const lightboxDescription = document.getElementById("lightbox-description")
+const lightboxPrev = document.getElementById("lightbox-prev")
+const lightboxNext = document.getElementById("lightbox-next")
+
+let currentImageIndex = 0
+let currentGalleryItems = []
+
+// Open art modal
+artLink.addEventListener("click", (e) => {
+  e.preventDefault()
+  artModal.classList.add("active")
+  document.body.style.overflow = "hidden"
+
+  // Trigger staggered animation for art items
+  setTimeout(() => {
+    const activeGallery = document.querySelector(".art-gallery.active")
+    const items = activeGallery.querySelectorAll(".art-item")
+    items.forEach((item, index) => {
+      item.style.animationDelay = `${index * 0.1}s`
+    })
+  }, 100)
+})
+
+// Close art modal
+artClose.addEventListener("click", () => {
+  artModal.classList.remove("active")
+  document.body.style.overflow = "auto"
+})
+
+// Close modal when clicking outside
+artModal.addEventListener("click", (e) => {
+  if (e.target === artModal) {
+    artModal.classList.remove("active")
+    document.body.style.overflow = "auto"
+  }
+})
+
+// Art category switching
+artCategoryBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // Remove active class from all buttons and galleries
+    artCategoryBtns.forEach((b) => b.classList.remove("active"))
+    artGalleries.forEach((g) => g.classList.remove("active"))
+
+    // Add active class to clicked button
+    btn.classList.add("active")
+
+    // Show corresponding gallery
+    const category = btn.getAttribute("data-category")
+    const targetGallery = document.getElementById(`${category}-gallery`)
+    targetGallery.classList.add("active")
+
+    // Reset and trigger staggered animation
+    const items = targetGallery.querySelectorAll(".art-item")
+    items.forEach((item, index) => {
+      item.style.animation = "none"
+      item.offsetHeight // Trigger reflow
+      item.style.animation = `fadeInScale 0.6s ease forwards`
+      item.style.animationDelay = `${index * 0.1}s`
+    })
+  })
+})
+
+// Art item click handlers for lightbox
+artItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    const img = item.querySelector("img")
+    const title = item.getAttribute("data-title")
+    const description = item.getAttribute("data-description")
+
+    // Get current gallery items for navigation
+    const activeGallery = item.closest(".art-gallery")
+    currentGalleryItems = Array.from(activeGallery.querySelectorAll(".art-item"))
+    currentImageIndex = currentGalleryItems.indexOf(item)
+
+    // Set lightbox content
+    lightboxImage.src = img.src
+    lightboxImage.alt = img.alt
+    lightboxTitle.textContent = title
+    lightboxDescription.textContent = description
+
+    // Show lightbox
+    artLightbox.classList.add("active")
+    document.body.style.overflow = "hidden"
+  })
+})
+
+// Close lightbox
+lightboxClose.addEventListener("click", () => {
+  artLightbox.classList.remove("active")
+  document.body.style.overflow = "hidden" // Keep modal scroll disabled
+})
+
+// Close lightbox when clicking outside
+artLightbox.addEventListener("click", (e) => {
+  if (e.target === artLightbox) {
+    artLightbox.classList.remove("active")
+    document.body.style.overflow = "hidden" // Keep modal scroll disabled
+  }
+})
+
+// Lightbox navigation
+lightboxPrev.addEventListener("click", () => {
+  currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : currentGalleryItems.length - 1
+  updateLightboxContent()
+})
+
+lightboxNext.addEventListener("click", () => {
+  currentImageIndex = currentImageIndex < currentGalleryItems.length - 1 ? currentImageIndex + 1 : 0
+  updateLightboxContent()
+})
+
+// Update lightbox content
+function updateLightboxContent() {
+  const currentItem = currentGalleryItems[currentImageIndex]
+  const img = currentItem.querySelector("img")
+  const title = currentItem.getAttribute("data-title")
+  const description = currentItem.getAttribute("data-description")
+
+  lightboxImage.style.opacity = "0"
+  setTimeout(() => {
+    lightboxImage.src = img.src
+    lightboxImage.alt = img.alt
+    lightboxTitle.textContent = title
+    lightboxDescription.textContent = description
+    lightboxImage.style.opacity = "1"
+  }, 150)
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener("keydown", (e) => {
+  if (artLightbox.classList.contains("active")) {
+    if (e.key === "Escape") {
+      artLightbox.classList.remove("active")
+      document.body.style.overflow = "hidden" // Keep modal scroll disabled
+    } else if (e.key === "ArrowLeft") {
+      lightboxPrev.click()
+    } else if (e.key === "ArrowRight") {
+      lightboxNext.click()
+    }
+  }
+
+  if (artModal.classList.contains("active") && e.key === "Escape") {
+    artModal.classList.remove("active")
+    document.body.style.overflow = "auto"
+  }
+})
+
+// Add smooth transitions for image loading
+artItems.forEach((item) => {
+  const img = item.querySelector("img")
+  img.addEventListener("load", () => {
+    img.style.opacity = "1"
+  })
+  img.style.opacity = "0"
+  img.style.transition = "opacity 0.3s ease"
+})
+
+// Add hover effects
+artItems.forEach((item) => {
+  item.addEventListener("mouseenter", () => {
+    item.style.transform = "translateY(-5px) scale(1.02)"
+  })
+
+  item.addEventListener("mouseleave", () => {
+    item.style.transform = "translateY(0) scale(1)"
+  })
+})
+
+// Lazy loading for art images (performance optimization)
+const artImageObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const img = entry.target
+      if (img.dataset.src) {
+        img.src = img.dataset.src
+        img.removeAttribute("data-src")
+        artImageObserver.unobserve(img)
+      }
+    }
+  })
+})
+
+// Observe all art images for lazy loading
+document.querySelectorAll(".art-item img").forEach((img) => {
+  artImageObserver.observe(img)
+})

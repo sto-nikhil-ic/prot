@@ -18,6 +18,7 @@
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
+                <a href="#" class="nav-link" id="art-link">Art</a>
                 <a href="#portfolio" class="nav-link">Portfolio</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
@@ -57,6 +58,228 @@
             </a>
         </div>
     </section>
+<!-- Art Modal -->
+<div id="art-modal" class="art-modal">
+    <div class="art-modal-content">
+        <div class="art-modal-header">
+            <h2>My Art Gallery</h2>
+            <span class="art-close">&times;</span>
+        </div>
+        
+        <div class="art-categories">
+            <button class="art-category-btn active" data-category="pencil">
+                <i class="fas fa-pencil-alt"></i>
+                <span>Pencil Sketch</span>
+            </button>
+            <button class="art-category-btn" data-category="pen">
+                <i class="fas fa-pen"></i>
+                <span>Pen/Hatching</span>
+            </button>
+            <button class="art-category-btn" data-category="color">
+                <i class="fas fa-palette"></i>
+                <span>Color</span>
+            </button>
+        </div>
+
+        <div class="art-gallery-container">
+            <!-- Pencil Sketch Gallery -->
+            <div class="art-gallery active" id="pencil-gallery">
+                <div class="art-grid">
+                    <div class="art-item" data-title="Portrait Study" data-description="Graphite pencil on paper">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Pencil Portrait">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Portrait Study</h3>
+                                <p>Graphite pencil on paper</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Nature Sketch" data-description="Detailed landscape drawing">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Nature Sketch">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Nature Sketch</h3>
+                                <p>Detailed landscape drawing</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Character Design" data-description="Original character concept">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Character Design">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Character Design</h3>
+                                <p>Original character concept</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Still Life" data-description="Objects study in graphite">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Still Life">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Still Life</h3>
+                                <p>Objects study in graphite</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Animal Study" data-description="Wildlife pencil drawing">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Animal Study">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Animal Study</h3>
+                                <p>Wildlife pencil drawing</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Architecture" data-description="Building sketch study">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Architecture">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Architecture</h3>
+                                <p>Building sketch study</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pen/Hatching Gallery -->
+            <div class="art-gallery" id="pen-gallery">
+                <div class="art-grid">
+                    <div class="art-item" data-title="Cross Hatching Portrait" data-description="Ink pen technique">
+                        <img src="art img/pen/kthatch.jpg" alt="Cross Hatching Portrait">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Cross Hatching Portrait</h3>
+                                <p>pen technique</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Stippling Art" data-description="Dotwork illustration">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Stippling Art">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Stippling Art</h3>
+                                <p>Dotwork illustration</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Line Art Design" data-description="Clean line illustration">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Line Art Design">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Line Art Design</h3>
+                                <p>Clean line illustration</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Hatching Study" data-description="Shadow and light technique">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hatching Study">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Hatching Study</h3>
+                                <p>Shadow and light technique</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Ink Illustration" data-description="Detailed pen work">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Ink Illustration">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Ink Illustration</h3>
+                                <p>Detailed pen work</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Technical Drawing" data-description="Precision line art">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Technical Drawing">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Technical Drawing</h3>
+                                <p>Precision line art</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Gallery -->
+            <div class="art-gallery" id="color-gallery">
+                <div class="art-grid">
+                    <div class="art-item" data-title="Watercolor Landscape" data-description="Vibrant nature scene">
+                        <img src="art img/color draw/eren.jpg" alt="Watercolor Landscape">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>EREN</h3>
+                                <p>black pastel</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Acrylic Portrait" data-description="Bold color study">
+                        <img src="art img/color draw/ktko.jpg" alt="pastel">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>pastel</h3>
+                                <p>practice</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Digital Painting" data-description="Digital art creation">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Digital Painting">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Digital Painting</h3>
+                                <p>Digital art creation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Oil Painting" data-description="Traditional oil technique">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Oil Painting">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Oil Painting</h3>
+                                <p>Traditional oil technique</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Mixed Media" data-description="Combined techniques">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Mixed Media">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Mixed Media</h3>
+                                <p>Combined techniques</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art-item" data-title="Color Study" data-description="Experimental color work">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Color Study">
+                        <div class="art-overlay">
+                            <div class="art-info">
+                                <h3>Color Study</h3>
+                                <p>Experimental color work</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Art Lightbox -->
+<div id="art-lightbox" class="art-lightbox">
+    <div class="lightbox-content">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-image" src="/placeholder.svg" alt="">
+        <div class="lightbox-info">
+            <h3 id="lightbox-title"></h3>
+            <p id="lightbox-description"></p>
+        </div>
+        <div class="lightbox-nav">
+            <button id="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+            <button id="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</div>
 
     <!-- About Section -->
     <section id="about" class="about">
