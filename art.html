@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Art Gallery</title>
+    <link rel="stylesheet" href="art.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="header-section">
+            <h1>My Art Gallery</h1>
+            <a href="index.html" class="button button-primary" rel="noreferrer noopener">Back to Profile</a>
+        </div>
+
+        <div class="category-buttons">
+            <button class="category-button active" data-category="all">
+                <i class="fas fa-grip-horizontal"></i> All Art
+            </button>
+            <button class="category-button" data-category="pencil">
+                <i class="fas fa-pencil-alt"></i> Pencil
+            </button>
+            <button class="category-button" data-category="pen">
+                <i class="fas fa-pen-nib"></i> Pen/Hatching
+            </button>
+            <button class="category-button" data-category="color">
+                <i class="fas fa-palette"></i> Color
+            </button>
+        </div>
+
+        <section id="all-art-section" class="art-category-section active">
+            <!-- This section acts as a wrapper for all categories when "All Art" is selected -->
+        </section>
+
+        <section id="pencil-art-section" class="art-category-section">
+            <h2>Pencil</h2>
+            <p>Explore detailed sketches and graphite works, capturing intricate forms and textures.</p>
+            <div class="art-grid">
+                <div class="art-item">
+                    <img src="art img/pencil/harrypotter.jpg" alt="Pencil Art 1">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+                <div class="art-item">
+                    <img src="art img/pencil/littlegirl.jpg" alt="Pencil Art 2">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+                <div class="art-item">
+                    <img src="art img/pencil/pain.jpg" alt="Pencil Art 3">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pen-art-section" class="art-category-section">
+            <h2>Pen/Hatching</h2>
+            <p>Discover expressive ink drawings and intricate cross-hatching techniques that bring depth to life.</p>
+            <div class="art-grid">
+                <div class="art-item">
+                    <img src="art img/pen/kthatch.jpg" alt="Pen Art 1">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+                <div class="art-item">
+                    <img src="art img/pen/churotekto.jpg" alt="Pen Art 2">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+                <div class="art-item">
+                    <img src="art img/pen/yoru.jpg" alt="Pen Art 3">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="color-art-section" class="art-category-section">
+            <h2>Color</h2>
+            <p>Immerse yourself in vibrant paintings and digital illustrations, showcasing a spectrum of hues.</p>
+            <div class="art-grid">
+                <div class="art-item">
+                    <img src="art img/color draw/eren.jpg" alt="Color Art 1">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+                <div class="art-item">
+                    <img src="art img/color draw/ktko.jpg" alt="Color Art 2">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+                <div class="art-item">
+                    <img src="art img/color draw/wallpaint.jpg" alt="Color Art 3">
+                    <div class="art-item-overlay"><span>View Art</span></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="art.js"></script>
+</body>
+</html>
